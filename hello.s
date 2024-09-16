@@ -18,3 +18,4 @@ _start:   mov       rax, 1                  ; system call for write
           syscall                           ; invoke operating system to exit
 
           section   .data
+          message db "hellloo", 10
