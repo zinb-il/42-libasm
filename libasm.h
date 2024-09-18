@@ -3,16 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   libasm.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/15 14:27:49 by ziloughm          #+#    #+#             */
-/*   Updated: 2024/09/15 14:34:52 by ziloughm         ###   ########.fr       */
+/*   Updated: 2024/09/18 13:51:05 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBASM_H
 # define LIBASM_H
 
-void	hellloo(void);
+#include <stdlib.h>
+#include <stdio.h>
+
+size_t  ft_strlen(const char *str);
 
 #endif

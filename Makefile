@@ -1,4 +1,4 @@
-SRCS = hello.s
+SRCS = ft_strlen.s
 
 OBJS = $(SRCS:.s=.o)
 
@@ -19,24 +19,28 @@ CFLAGS = -Wall -Wextra -Werror
 CSRCS = main.c
 
 $(OBJS): 
-		$(AS) $(ASFLAGS) $(SRCS) && $(LD) $(OBJS) -o $(NAME_LIB)
+		$(AS) $(ASFLAGS) $(SRCS) 
 		@echo "\033[0;32mLes fichiers *.o ont été bien créés!!\033[0;0m"
 		@echo "\033[0;32mParfait !!\033[0;0m"
 
 $(NAME) : $(OBJS)
-#		ar -rc $(NAME_LIB) $(OBJS)
+		ar rcs $(NAME_LIB) $(OBJS)
+#		$(LD) $(OBJS) -o $(NAME_LIB)
 
 all : $(NAME)
 
-cmain: 
-		$(CC) $(CFLAGS) $(CSRCS) -L $(NAME_LIB)
+link: 
+		$(LD) $(OBJS) -o $(NAME)
+
+cmain:
+		$(CC) $(CFLAGS) $(CSRCS) $(NAME_LIB) -o main
 
 clean :
 		rm -f $(OBJS)
 		@echo "\033[0;31mles fichiers .o sont supprimés\033[0;0m"
 
 fclean : clean
-		rm -f $(NAME)
+		rm -f $(NAME_LIB)
 		@echo "\033[0;31mVotre programme est bien supprimé\033[0;0m"
 
 re : fclean all

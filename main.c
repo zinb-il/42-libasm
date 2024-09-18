@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ziloughm <ziloughm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/15 14:25:31 by ziloughm          #+#    #+#             */
-/*   Updated: 2024/09/15 14:45:33 by ziloughm         ###   ########.fr       */
+/*   Updated: 2024/09/18 14:12:20 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,6 @@ int	main(int argc, char **argv)
 {
 	(void) argc;
 	(void) argv;
-	hellloo();
-	return (1);
+	printf("%d ", (int)ft_strlen(NULL));
+	return (0);
 }

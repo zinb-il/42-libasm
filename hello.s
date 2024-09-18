@@ -1,21 +1,34 @@
-; ----------------------------------------------------------------------------------------
-; Writes "Hello, World" to the console using only system calls. Runs on 64-bit Linux only.
-; To assemble and run:
-;
-;     nasm -felf64 hello.asm && ld hello.o && ./a.out
-; ----------------------------------------------------------------------------------------
+;First Assembly program
 
-          global    _start
+    global  hello
+    
+    section .text
+hello:  
+        ;Pour afficher un message
+        mov rax, 1
+        mov rdi, 1
+        mov rsi, msg1
+        mov rdx, len    
+        syscall
 
-          section   .text
-_start:   mov       rax, 1                  ; system call for write
-          mov       rdi, 1                  ; file handle 1 is stdout
-          mov       rsi, message            ; address of string to output
-          mov       rdx, 13                 ; number of bytes
-          syscall                           ; invoke operating system to do the write
-          mov       rax, 60                 ; system call for exit
-          xor       rdi, rdi                ; exit code 0
-          syscall                           ; invoke operating system to exit
+        ;Pour demander au utilisateur de saisir une valeur
+        mov rax, 0
+        mov rdi, 0
+        mov rsi, num
+        mov rdx, 5
+        syscall
 
-          section   .data
-          message db "hellloo", 10
+        ;Afficher ce que l'utilisateur a saisir
+        mov rax, 1
+        mov rdi, 1
+        mov rsi, num
+        mov rdx, 5
+        syscall
+
+        ret
+    section .data
+        msg1 db "ppp", 10
+        len  db 4
+    section .bss
+        num resb 5
+        
