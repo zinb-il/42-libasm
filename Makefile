@@ -1,30 +1,25 @@
-SRCS = ft_strlen.s
-
+SRCS = ft_strlen.s ft_strcpy.s
 OBJS = $(SRCS:.s=.o)
 
 AS = nasm
-
 ASFLAGS = -felf64
 
 NAME = libasm
-
 NAME_LIB = libasm.a
 
 LD = ld
-
 CC = cc
-
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -fsanitize=address
 
 CSRCS = main.c
 
-$(OBJS): 
-		$(AS) $(ASFLAGS) $(SRCS) 
-		@echo "\033[0;32mLes fichiers *.o ont été bien créés!!\033[0;0m"
-		@echo "\033[0;32mParfait !!\033[0;0m"
+%.o: %.s
+	$(AS) $(ASFLAGS) $< -o $@
+	@echo "\033[0;32mLes fichiers *.o ont été bien créés!!\033[0;0m"
 
 $(NAME) : $(OBJS)
-		ar rcs $(NAME_LIB) $(OBJS)
+	  	ar -rcs $(NAME_LIB) $(OBJS)
+		@echo "\033[0;32mParfait !!\033[0;0m"
 #		$(LD) $(OBJS) -o $(NAME_LIB)
 
 all : $(NAME)
